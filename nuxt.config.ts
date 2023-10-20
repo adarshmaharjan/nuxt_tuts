@@ -1,6 +1,11 @@
 import type { NuxtConfig } from "@nuxt/types";
 const config: NuxtConfig = {
-  modules: ["@nuxt/content", "@pinia/nuxt"],
+  modules: ["@nuxt/content", "@pinia/nuxt", "@nuxtjs/storybook"],
+  storybook: {
+    url: "http://localhost:6006",
+    storybookRoute: "/__storybook__",
+    port: 6006,
+  },
   content: {},
   alias: {
     // * way to specify path
@@ -24,7 +29,7 @@ const config: NuxtConfig = {
     },
   },
   // * For making ssr all true
-  // ssr: true,
+  // ssr: true
   routeRules: {
     "/custom/**": { static: true },
   },
@@ -35,6 +40,10 @@ const config: NuxtConfig = {
       "defineStore", // import { defineStore } from 'pinia'
       ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
     ],
+  },
+  sourcemap: {
+    server: true,
+    client: true,
   },
 };
 
